@@ -1,0 +1,57 @@
+
+Exemple 
+
+#showtooltip Flash Heal
+/cast [modifier:alt,target=player] [target=mouseover,help,exists] [] Flash Heal
+
+Macro MC / cancel MC :
+#showtooltip Dominate Mind
+/focus @focus,noexists
+/cast Dominate Mind
+/script PetDismiss()
+(met automatiquement en focus ma cible que je contrôle mentale et quand je press deux fois mon bind ça cancel mon MC)
+
+Macro penance en raid (cible automatiquement une cible ennemie à l'utilisation mais ne peux pas mouseover vers une cible allié) :
+#showtooltip
+/cleartarget [dead][noharm]
+/targetenemy [noexists]
+/cast Penance
+/run UIErrorsFrame:Clear()
+
+Macro penance M+ :
+#showtooltip Penance
+/cast [modifier:alt,target=player] [target=mouseover,help,exists] [] Penance
+
+Macro Priest PickMeUp & levitate (3binds en 1) :
+/use Cinder Nectar
+/cancelaura Mister Pick-Me-Up
+/cancelaura Slightly Irradiated
+/cancelaura Levitate
+
+Maccro Mot de pouvoir : Barrière en cursor :
+#showtooltip Power Word: Barrier
+/cast [@cursor] Power Word: Barrier
+/cast Luminous Barrier
+
+Macro exemple trinket cursor :
+#showtooltip Bursting Lightshard
+/cast [@focus, exists, help, nodead] Power Word: Shield 
+/use [@cursor] item:219310 
+/targetexact Bursting Lightspawn 
+/focus 
+/targetlasttarget
+
+Macro exemple trinket mouseover :
+/cast [modifier:alt,target=player] [target=mouseover,help,exists] [] Revitalizing Voodoo Totem
+
+Macro kick première cible qui canalise :
+#showtooltip mind freeze
+/cast [@focus,exists,nodead,harm] mind freeze
+/stopmacro [@focus,exists,nodead,harm]
+/focus target
+/cleartarget
+/targetenemy
+/cast mind freeze
+/target focus
+/clearfocus
+/startattack
